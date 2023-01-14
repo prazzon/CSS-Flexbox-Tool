@@ -265,7 +265,7 @@ body {
 
 .flex-container-item-btn {
     background-color: var(--color-tertiary);
-    padding: 1rem 0.2rem;
+    padding: 1.2rem 0.2rem;
     min-width: 12rem;
     font-size: 1.6rem;
     border-radius: 0.5rem;
@@ -440,6 +440,62 @@ body {
 
 .flex-item-container.active .flex-item-delete {
     display: block;
+}
+
+.flex-item-info {
+    border-radius: 2rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    margin-left: .5rem;
+}
+
+.flex-item-info-icon {
+    color: var(--color-tertiary);
+    border-radius: 50%;
+    border: 1px solid #a0a0a0;
+    background-color: #a0a0a0;
+    transition: all 0.1s;
+}
+
+.flex-item-info-icon:hover {
+    border: 1px solid #eeeeee;
+    background-color: #eeeeee;
+}
+
+.flex-item-info-tooltip {
+    position: absolute;
+    top: 25%;
+    left: 0;
+    background-color: var(--color-tertiary);
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 1.5rem;
+    font-size: 1.2rem;
+    display: none;
+    transition: all 0.2s;
+    box-shadow: 1.5px 3px 0 0 #646464;
+    z-index: 3000;
+}
+
+.flex-item-info:hover .flex-item-info-tooltip {
+    display: block;
+}
+
+.flex-item-info-tooltip-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.flex-item-info-tooltip-content-item-title {
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    display: inline;
+}
+
+.flex-item-info-tooltip-content-item-content {
+    font-size: 1.4rem;
+    color: #fff;
 }
 
 .checkbox-container {
@@ -635,7 +691,7 @@ body {
 .code-container-text {
     font-size: 1.4rem;
     height: 55rem;
-    overflow-y: scroll;
+    overflow-y: auto;
     border-radius: 0 2rem 2rem 2rem;
     padding: 2rem;
     color: #dcdadc;
@@ -665,10 +721,6 @@ body {
 }
 
 .copy-icon:hover {
-    box-shadow: 2px 4px 0 0 var(--color-primary);
-}
-
-.copy-icon:active {
     box-shadow: 1.5px 3px 0 0 var(--color-primary);
 }
 
@@ -693,15 +745,11 @@ body {
 
 .footer {
     text-align: center;
-    font-size: 1.2rem;
     font-size: 1.4rem;
     color: #c1c1c1;
-    padding-top: 1rem;
-    margin-bottom: 3rem;
-    position: absolute;
-    bottom: 1rem;
-    left: 50%;
-    transform: translate(-50%, 0);
+    margin: 0 auto;
+    transform: translateY(-1.5rem);
+    width: 30rem;
 }
 
 .footer a {

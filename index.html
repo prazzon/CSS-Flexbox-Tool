@@ -16,11 +16,10 @@
     </div>
 
     <div class="tools-container">
-        <div class="playground" id="playground">
-            <div class="add-item-btn" id="add-item-btn">
-                <i class="fas fa-plus"></i>
-            </div>
+        <div class="add-item-btn" id="add-item-btn">
+            <i class="fas fa-plus"></i>
         </div>
+        <div class="playground" id="playground"></div>
         <div class="flex-container">
             <h3 class="container-title">Flex Container</h3>
             <div class="flex-container-item-display">
@@ -96,6 +95,26 @@
                     <input type="number" id="flex-grow-input" class="flex-input flex-item-input-sm" value="0">
                     <input type="number" id="flex-shrink-input" class="flex-input flex-item-input-sm" value="1">
                     <input type="text" id="flex-basis-input" class="flex-input flex-item-input-md" value="auto">
+                    <!-- information icon -->
+                    <div class="flex-item-info">
+                        <i class="fas fa-info-circle flex-item-info-icon"></i>
+                        <div class="flex-item-info-tooltip">
+                            <div class="flex-item-info-tooltip-content">
+                                <div class="flex-item-info-tooltip-content-item">
+                                    <span class="flex-item-info-tooltip-content-item-title">i. flex-grow</span>
+                                    <div class="flex-item-info-tooltip-content-item-content">This defines the ability for a flex item to grow if necessary. It dictates what amount of the available space inside the flex container the item should take up.</div>
+                                </div>
+                                <div class="flex-item-info-tooltip-content-item">
+                                    <div class="flex-item-info-tooltip-content-item-title">ii. flex-shrink</div>
+                                    <div class="flex-item-info-tooltip-content-item-content">This defines the ability for a flex item to shrink if necessary. It dictates what amount of the available space inside the flex container the item should take up.</div>
+                                </div>
+                                <div class="flex-item-info-tooltip-content-item">
+                                    <div class="flex-item-info-tooltip-content-item-title">iii. flex-basis</div>
+                                    <div class="flex-item-info-tooltip-content-item-content">This defines the default size of an element before the remaining space is distributed. It can be a length (e.g. 20%, 5rem, etc.) or a keyword. The auto keyword means "look at my width or height property".</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="flex-item">
                     <div class="flex-item-title">Align-self:</div>

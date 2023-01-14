@@ -44,7 +44,7 @@ addItemBtn.addEventListener('click', () => {
     const lastPlaygroundItem = playground.children.length - 1;
 
     // Create a new playground item
-    createPlaygroundItem(lastPlaygroundItem);
+    createPlaygroundItem(lastPlaygroundItem + 1);
 });
 
 // Add click event to display toggle buttons and all flex container style buttons
@@ -134,13 +134,11 @@ getCodeBtn.addEventListener('click', () => {
     playgroundItems.forEach((item, index) => {
         cssCode.innerHTML += `<br><br>.flexbox-container > div:nth-child(${index + 1}) {<br>
             <span class='tab'></span>order: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('order')}</span>;<br>
-            <span class='tab'></span>flex-grow: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('flex-grow')}</span>;<br>
-            <span class='tab'></span>flex-shrink: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('flex-shrink')}</span>;<br>
-            <span class='tab'></span>flex-basis: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('flex-basis')}</span>;<br>
+            <span class='tab'></span>flex: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('flex')}</span>;<br>
             <span class='tab'></span>align-self: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('align-self')}</span>;<br>
-            <span class='tab'></span>font-size: <span class='highlight'>${playgroundItemsData[index].fontSize}px</span>;<br>
-            <span class='tab'></span>min-width: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('min-width')}</span>;<br>
-            <span class='tab'></span>min-height: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('min-height')}</span>;<br>
+            ${playground.children[index].style.fontSize ? `<span class='tab'></span>font-size: <span class='highlight'>${playground.children[index].style.fontSize}</span>;<br>` : ''}
+            ${playground.children[index].style.minWidth ? `<span class='tab'></span>min-width: <span class='highlight'>${playground.children[index].style.minWidth}</span>;<br>` : ''}
+            ${playground.children[index].style.minHeight ? `<span class='tab'></span>min-height: <span class='highlight'>${playground.children[index].style.minHeight}</span>;<br>` : ''}
         }
         `;
     });
