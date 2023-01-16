@@ -48,6 +48,7 @@ body {
     background-color: var(--color-background);
     padding: 3rem;
     color: #fff;
+    height: 100vh;
 }
 
 /* #################### */
@@ -74,7 +75,8 @@ body {
 
 .tools-container {
     display: flex;
-    height: 61.5rem;
+    height: calc(100% - 16.7rem);
+    max-height: 61.5rem;
 }
 
 /* #################### */
@@ -135,7 +137,7 @@ body {
 }
 
 .add-item-btn {
-    position: fixed;
+    position: absolute;
     top: 13.4rem;
     left: calc(100% - 490px + -12rem);
     font-size: 3rem;
@@ -240,7 +242,7 @@ body {
 }
 
 .flex-container-items {
-    height: 45rem;
+    height: calc(100% - 11rem);
     overflow-y: auto;
     overflow-x: hidden;
     padding-right: 0.5rem;
@@ -295,13 +297,16 @@ body {
 
 .flex-item-container {
     background-color: var(--color-secondary);
-    height: 100%;
+    height: calc(100% - 11rem);
     padding-top: 2rem;
-    transition: transform 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    padding-right: 0.5rem;
+    overflow: hidden;
+    overflow-y: auto;
+    transition: transform .6s cubic-bezier(0.4, -0.4, 0.1, 1.4);
 }
 
 .flex-item-container.active {
-    transform: translateY(-45rem);
+    transform: translateY(-100%);
 }
 
 .flex-item-container-arrow {
@@ -326,20 +331,16 @@ body {
     transform: translateY(-0.2rem);
 }
 
-.flex-items {
-    display: flex;
-    margin-left: 3rem;
-    padding-bottom: 1rem;
-    overflow-x: auto;
-    gap: 1.5rem;
-}
-
 .flex-item {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.7rem;
     font-size: 1.6rem;
+}
+
+.flex-item.last-child {
+    margin-bottom: 0;
 }
 
 .hr {
@@ -353,6 +354,14 @@ body {
     text-transform: uppercase;
     width: 12rem;
     width: 8rem;
+}
+
+.flex-items {
+    display: flex;
+    margin-left: 3.8rem;
+    padding-bottom: 1rem;
+    overflow-x: auto;
+    gap: 1.5rem;
 }
 
 .flex-item-btn {
@@ -417,25 +426,37 @@ body {
 
 .flex-item-delete {
     position: absolute;
-    top: 70%;
-    left: 35.5rem;
+    top: 38.5rem;
+    left: calc(100% - 5.8rem);
     border-radius: 1.25rem;
-    padding: 1rem 2rem;
     cursor: pointer;
     display: none;
     transition: all 0.2s;
     padding: 1rem;
     border: 0px solid transparent;
-    background-color: rgba(100, 77, 237, 0.08);
+    background-color: var(--color-tertiary);
+    border: 2px solid #808080;
+    box-shadow: 2px 4px 0 0 #808080;
+
 }
 
 .flex-item-delete:hover {
-    background-color: rgba(100, 77, 237, 0.2);
+    border: 2px solid #c6523f;
+    box-shadow: 2px 4px 0 0 #c6523f;
+}
+
+.flex-item-delete:hover svg path {
+    fill: #c6523f;
 }
 
 .flex-item-delete svg {
     height: 30px;
     width: 30px;
+}
+
+.flex-item-delete svg path {
+    fill: #808080;
+    transition: all 0.2s;
 }
 
 .flex-item-container.active .flex-item-delete {
@@ -744,12 +765,12 @@ body {
 }
 
 .footer {
-    text-align: center;
     font-size: 1.4rem;
     color: #c1c1c1;
-    margin: 0 auto;
-    transform: translateY(-1.5rem);
-    width: 30rem;
+    position: absolute;
+    bottom: 5%;
+    left: 50%;
+    transform: translate(-50%);
 }
 
 .footer a {
