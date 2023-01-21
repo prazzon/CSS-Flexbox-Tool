@@ -40,13 +40,14 @@ input[type="number"] {
 
 html {
     font-size: 62.5%;
-    overflow: hidden;
+    overflow-y: auto;
 }
 
 body {
     font-family: "Itim", cursive;
     background-color: var(--color-background);
     padding: 3rem;
+    padding-bottom: 2rem;
     color: #fff;
 }
 
@@ -135,7 +136,7 @@ body {
 }
 
 .add-item-btn {
-    position: fixed;
+    position: absolute;
     top: 13.4rem;
     left: calc(100% - 490px + -12rem);
     font-size: 3rem;
@@ -201,7 +202,8 @@ body {
     transition: all 0.3s;
 }
 
-.flex-container-item-display-btns + span {
+.flex-container-item-display-btns::after {
+    content: "";
     display: block;
     width: 10rem;
     height: 4rem;
@@ -210,11 +212,10 @@ body {
     top: 0.4rem;
     left: 18.4rem;
     border-radius: 3rem;
-    z-index: 1;
     transition: all 0.3s;
 }
 
-.flex-container-item-display-btns.active + span {
+.flex-container-item-display-btns.active::after {
     width: 11rem;
     left: 28.8rem;
 }
@@ -228,7 +229,7 @@ body {
     margin: 5px;
     cursor: pointer;
     transition: all 0.3s;
-    z-index: 2;
+    z-index: 1;
 }
 
 .flex-container-item-display-btn:hover {
@@ -298,6 +299,8 @@ body {
     height: 100%;
     padding-top: 2rem;
     transition: transform 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+    position: relative;
+    z-index: 5;
 }
 
 .flex-item-container.active {
@@ -386,7 +389,7 @@ body {
 .flex-input {
     background-color: var(--color-tertiary);
     border: 0.5px solid #808080;
-    border-radius: .5rem;
+    border-radius: 0.5rem;
     color: #fff;
     text-align: center;
     height: 2.7rem;
@@ -417,25 +420,36 @@ body {
 
 .flex-item-delete {
     position: absolute;
-    top: 70%;
-    left: 35.5rem;
+    top: 39.5rem;
+    left: calc(100% - 5rem);
     border-radius: 1.25rem;
-    padding: 1rem 2rem;
     cursor: pointer;
     display: none;
     transition: all 0.2s;
-    padding: 1rem;
+    padding: 0.8rem;
     border: 0px solid transparent;
-    background-color: rgba(100, 77, 237, 0.08);
+    background-color: var(--color-tertiary);
+    border: 2px solid #808080;
+    box-shadow: 2px 4px 0 0 #808080;
 }
 
 .flex-item-delete:hover {
-    background-color: rgba(100, 77, 237, 0.2);
+    border: 2px solid #c6523f;
+    box-shadow: 2px 4px 0 0 #c6523f;
+}
+
+.flex-item-delete:hover svg path {
+    fill: #c6523f;
 }
 
 .flex-item-delete svg {
     height: 30px;
     width: 30px;
+}
+
+.flex-item-delete svg path {
+    fill: #808080;
+    transition: all 0.2s;
 }
 
 .flex-item-container.active .flex-item-delete {
@@ -446,14 +460,14 @@ body {
     border-radius: 2rem;
     cursor: pointer;
     transition: all 0.2s;
-    margin-left: .5rem;
+    margin-left: 4rem;
 }
 
 .flex-item-info-icon {
-    color: var(--color-tertiary);
+    color: var(--color-secondary);
     border-radius: 50%;
-    border: 1px solid #a0a0a0;
-    background-color: #a0a0a0;
+    border: 1px solid #888;
+    background-color: #888;
     transition: all 0.1s;
 }
 
@@ -685,7 +699,6 @@ body {
     border-radius: 1.5rem 1.5rem 0 0;
     background-color: var(--color-tertiary);
     font-family: "Itim", cursive;
-
 }
 
 .code-container-text {
@@ -812,5 +825,36 @@ body {
     }
     100% {
         transform: scale(1);
+    }
+}
+
+/* ############################## */
+/* Media Queries */
+/* ############################## */
+
+@media screen and (max-height: 700px) {
+    .tools-container {
+        height: 48.5rem;
+    }
+
+    .flex-container-items {
+        height: 35rem;
+    }
+
+    .flex-item-container {
+        height: 120%;
+    }
+
+    .flex-item-container.active {
+        transform: translateY(-48rem);
+    }
+
+    .modal {
+        height: 50rem;
+        min-width: 70rem;
+    }
+
+    .code-container-text {
+        height: 35rem;
     }
 }
