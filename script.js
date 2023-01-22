@@ -35,7 +35,12 @@ let currentPlaygroundItem;
 
 // Create 3 playground items on page load
 for (let i = 0; i < 3; i++) {
-    createPlaygroundItem(i);
+    // createPlaygroundItem(i);
+
+    // Add playground item after .5 second of each item
+    setTimeout(() => {
+        createPlaygroundItem(i);
+    }, 500 * i);
 }
 
 // Add click event to add item button
@@ -82,8 +87,13 @@ closeFlexItemBtn.addEventListener('click', () => {
 // Event listener to delete the current playground item
 deleteItemBtn.addEventListener('click', () => {
     // Remove the current playground item
-    playground.children[currentPlaygroundItem].remove();
     flexItemContainer.classList.remove("active");
+    playground.children[currentPlaygroundItem].classList.remove("active")
+    playground.children[currentPlaygroundItem].classList.add('remove');
+    // playground.children[currentPlaygroundItem].remove();
+    setTimeout(() => {
+        playground.children[currentPlaygroundItem].remove();
+    }, 390);
 });
 
 // Event listener to open and close the modal
@@ -166,6 +176,10 @@ function createPlaygroundItem(index) {
     // Create a new playground item
     const playgroundItem = document.createElement('div');
     playgroundItem.classList.add('playground-item');
+    playgroundItem.classList.add('show');
+    setTimeout(() => {
+        playgroundItem.classList.remove('show');
+    }, 1000);
     const playgroundItemText = document.createElement('div');
     playgroundItemText.classList.add('playground-item-text');
     playgroundItemText.textContent = index + 1;

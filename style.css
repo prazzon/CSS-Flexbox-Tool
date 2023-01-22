@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Itim&family=JetBrains+Mono&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&family=Itim&display=swap');
+
 @font-face {
     font-family: "Rocher";
     src: url(https://assets.codepen.io/9632/RocherColorGX.woff2);
@@ -109,7 +110,15 @@ body {
     font-size: 2.5rem;
     padding: 1rem;
     cursor: pointer;
-    transition: box-shadow 0.3s;
+    transition: all 0.5s, box-shadow 0.3s;
+}
+
+.playground-item.show {
+    animation: slide-in-left .7s both;
+}
+
+.playground-item.remove {
+    animation: slide-out-left .4s;
 }
 
 .playground-item.active {
@@ -655,10 +664,10 @@ body {
     top: 2rem;
     right: 2rem;
     line-height: 1;
-    font-family: "Jetbrains Mono", monospace;
-    font-size: 4rem;
+    font-family: 'Inconsolata', monospace;
+    font-size: 4.5rem;
     cursor: pointer;
-    padding: 0 1rem;
+    padding: 0 1.2rem;
     border-radius: 0.8rem;
     border: 0.5px solid #808080;
     box-shadow: 1.5px 3px 0 0 #646464;
@@ -686,7 +695,7 @@ body {
 
 .code-container {
     padding-top: 2rem;
-    font-family: "JetBrains Mono", monospace;
+    font-family: 'Inconsolata', monospace;
 }
 
 .code-container-title {
@@ -702,7 +711,8 @@ body {
 }
 
 .code-container-text {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    line-height: 1.5;
     height: 55rem;
     overflow-y: auto;
     border-radius: 0 2rem 2rem 2rem;
@@ -724,7 +734,7 @@ body {
     top: 12rem;
     right: 7rem;
     font-size: 2rem;
-    padding: 1rem 1.5rem;
+    padding: 1.2rem 1.7rem;
     border-radius: 1rem;
     border: 0.5px solid #808080;
     background-color: var(--color-tertiary);
@@ -828,17 +838,62 @@ body {
     }
 }
 
+@keyframes slide-in-left {
+    0% {
+        transform: translateX(-30%);
+        opacity: 0;
+    }
+    30% {
+        transform: translateX(10%);
+        opacity: 1;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slide-out-left {
+    0% {
+        transform: translateX(0%);
+        opacity: 1;
+    }
+    30% {
+        transform: translateX(10%);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-30%);
+        opacity: 0;
+    }
+}
+
+
 /* ############################## */
 /* Media Queries */
 /* ############################## */
 
-@media screen and (max-height: 700px) {
+@media screen and (max-height: 740px) {
+    body {
+        padding: 2rem;
+    }
+
+    .header {
+        margin-bottom: 2rem;
+    }
+    
     .tools-container {
         height: 48.5rem;
     }
 
+    .add-item-btn {
+        top: 11.5rem;
+        left: calc(100% - 490px + -11.1rem);
+    }
+
     .flex-container-items {
-        height: 35rem;
+        height: 33rem;
     }
 
     .flex-item-container {
@@ -846,7 +901,7 @@ body {
     }
 
     .flex-item-container.active {
-        transform: translateY(-48rem);
+        transform: translateY(-46rem);
     }
 
     .modal {
