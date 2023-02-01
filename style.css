@@ -163,6 +163,39 @@ body {
     color: #fff;
 }
 
+.option {
+    position: absolute;
+    top: 66.2rem;
+    right: 54.3rem;
+    padding: 1rem;
+    background-color: var(--color-tertiary);
+    box-shadow: 1.5px 3px 0 0 #646464;
+    border: .5px solid rgba(128, 128, 128, 0.1);
+    border-radius: 10px;
+    z-index: 10;
+    opacity: .9;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    overflow: hidden;
+    transition: all .3s;
+}
+
+.option:hover {
+    opacity: 1;
+}
+
+.option.active {
+    box-shadow: 1.5px 3px 0 0 var(--color-primary);
+}
+
+.select-multiple-title {
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
 /* #################### */
 /* Flex Container */
 /* #################### */
@@ -204,7 +237,6 @@ body {
 .flex-container-item-display-btns {
     display: flex;
     background-color: var(--color-tertiary);
-    font-size: 1.8rem;
     font-size: 1.7rem;
     border: 0.5px solid #303030;
     border-radius: 3rem;
@@ -215,18 +247,18 @@ body {
     content: "";
     display: block;
     width: 10rem;
-    height: 4rem;
+    height: 3.6rem;
     background-color: #fff;
     position: absolute;
-    top: 0.4rem;
-    left: 18.4rem;
+    top: .5rem;
+    left: 18.5rem;
     border-radius: 3rem;
-    transition: all 0.3s;
+    transition: all 0.3s ease-in-out;
 }
 
 .flex-container-item-display-btns.active::after {
     width: 11rem;
-    left: 28.8rem;
+    left: 28.6rem;
 }
 
 .flex-container-item-display-btn {
@@ -239,6 +271,10 @@ body {
     cursor: pointer;
     transition: all 0.3s;
     z-index: 1;
+}
+
+.flex-container-item-display-btn:last-of-type {
+    padding-right: 1.5rem;
 }
 
 .flex-container-item-display-btn:hover {
@@ -307,6 +343,7 @@ body {
     background-color: var(--color-secondary);
     height: 100%;
     padding-top: 2rem;
+    transform: translateY(1rem);
     transition: transform 0.7s cubic-bezier(0.68, -0.6, 0.32, 1.6);
     position: relative;
     z-index: 5;
@@ -365,6 +402,7 @@ body {
     text-transform: uppercase;
     width: 12rem;
     width: 8rem;
+    /* width: 9rem; */
 }
 
 .flex-item-btn {
@@ -892,6 +930,11 @@ body {
         left: calc(100% - 490px + -11.1rem);
     }
 
+    .option {
+        top: 51.2rem;
+        right: 53.3rem;
+    }
+    
     .flex-container-items {
         height: 33rem;
     }
