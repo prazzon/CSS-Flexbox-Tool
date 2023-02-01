@@ -1,28 +1,27 @@
-# CSS-Flexbox-Tool
-A CSS Flexbox Playground Tool
+# CSS Flexbox Tool
 
-## Link
-[CSS-Flexbox-Tool](https://cssflexboxtool.netlify.app/)
+CSS Flexbox Tool is a CSS flexbox playground and code generator tool. It's a tool for building layouts using CSS Flexbox.
 
-## Installation
-
-* Clone the repository
-
-* Open the index.html file in your browser
+## Features
+- Edit properties of the flex container and flex container items.
+- Make custom styles to flexbox items.
+- Get the CSS code and copy them to your project.
 
 ## Usage
+- Click on the flex container properties on the right to change them.
+- Click a flex item in the container to edit its styles.
+- Click on the "Get code" button to get the CSS code.
 
-* Use the tool to generate CSS flexbox properties and flexbox item properties.
+## Live Demo
+The live demo of CSS Flexbox Tool can be found at https://cssflexboxtool.netlify.app/
 
-* Make custom styles to flexbox items.
-
-* Copy and paste CSS properties into your website or project.
+## Technical Stack
+- HTML
+- CSS
+- JavaScript
 
 ## Contributing
+If you'd like to contribute to the development of CSS Flexbox Tool, you're welcome to do so! Just make a pull request and I'll review and merge it if everything is good to go.
 
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-## Author
-
-* @**[**Praise Ogunleye**](https://github.com/prazzon)**
+## License
+CSS Flexbox Tool is open-source software licensed under the [MIT license](LICENSE).
