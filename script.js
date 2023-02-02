@@ -149,28 +149,38 @@ getCodeBtn.addEventListener('click', () => {
         playgroundItemsData.push(item.dataset);
     });
 
-    // Update the css code element with the code
+    // Update the css code element with the code that are not the default value
     cssCode.innerHTML = `.flexbox-container {<br>
         <span class='tab'></span>display: <span class='highlight'>${display}</span>;<br>
-        <span class='tab'></span>flex-direction: <span class='highlight'>${flexDirection}</span>;<br>
-        <span class='tab'></span>flex-wrap: <span class='highlight'>${flexWrap}</span>;<br>
-        <span class='tab'></span>justify-content: <span class='highlight'>${justifyContent}</span>;<br>
-        <span class='tab'></span>align-items: <span class='highlight'>${alignItems}</span>;<br>
-        <span class='tab'></span>align-content: <span class='highlight'>${alignContent}</span>;<br>
+        ${flexDirection !== 'row' ? `<span class='tab'></span>flex-direction: <span class='highlight'>${flexDirection}</span>;<br>` : ''}
+        ${flexWrap !== 'nowrap' ? `<span class='tab'></span>flex-wrap: <span class='highlight'>${flexWrap}</span>;<br>` : ''}
+        ${justifyContent !== 'flex-start' ? `<span class='tab'></span>justify-content: <span class='highlight'>${justifyContent}</span>;<br>` : ''}
+        ${alignItems !== 'stretch' ? `<span class='tab'></span>align-items: <span class='highlight'>${alignItems}</span>;<br>` : ''}
+        ${alignContent !== 'stretch' ? `<span class='tab'></span>align-content: <span class='highlight'>${alignContent}</span>;<br>` : ''}
     }
     `;
 
-    // Loop through each playground item and add the code
+    // Loop through each playground item and add the code that are not the default value
     playgroundItems.forEach((item, index) => {
-        cssCode.innerHTML += `<br><br>.flexbox-container > div:nth-child(${index + 1}) {<br>
-            <span class='tab'></span>order: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('order')}</span>;<br>
-            <span class='tab'></span>flex: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('flex')}</span>;<br>
-            <span class='tab'></span>align-self: <span class='highlight'>${playgroundItemsStyle[index].getPropertyValue('align-self')}</span>;<br>
-            ${playground.children[index].style.fontSize ? `<span class='tab'></span>font-size: <span class='highlight'>${playground.children[index].style.fontSize}</span>;<br>` : ''}
-            ${playground.children[index].style.minWidth ? `<span class='tab'></span>min-width: <span class='highlight'>${playground.children[index].style.minWidth}</span>;<br>` : ''}
-            ${playground.children[index].style.minHeight ? `<span class='tab'></span>min-height: <span class='highlight'>${playground.children[index].style.minHeight}</span>;<br>` : ''}
+        const order = playgroundItemsStyle[index].getPropertyValue('order');
+        const flex = playgroundItemsStyle[index].getPropertyValue('flex');
+        const alignSelf = playgroundItemsStyle[index].getPropertyValue('align-self');
+        const fontSize = playground.children[index].style.fontSize;
+        const minWidth = playground.children[index].style.minWidth;
+        const minHeight = playground.children[index].style.minHeight;
+
+        // Check if all the values are not the default value
+        if (order !== '0' || flex !== '0 1 auto' || alignSelf !== 'auto' || fontSize || minWidth || minHeight) {
+            cssCode.innerHTML += `<br><br>.flexbox-container > div:nth-child(${index + 1}) {<br>
+                ${order !== '0' ? `<span class='tab'></span>order: <span class='highlight'>${order}</span>;<br>` : ''}
+                ${flex !== '0 1 auto' ? `<span class='tab'></span>flex: <span class='highlight'>${flex}</span>;<br>` : ''}
+                ${alignSelf !== 'auto' ? `<span class='tab'></span>align-self: <span class='highlight'>${alignSelf}</span>;<br>` : ''}
+                ${fontSize ? `<span class='tab'></span>font-size: <span class='highlight'>${fontSize}</span>;<br>` : ''}
+                ${minWidth ? `<span class='tab'></span>min-width: <span class='highlight'>${minWidth}</span>;<br>` : ''}
+                ${minHeight ? `<span class='tab'></span>min-height: <span class='highlight'>${minHeight}</span>;<br>` : ''}
+            }
+            `;
         }
-        `;
     });
 })
 
