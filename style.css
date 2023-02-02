@@ -91,6 +91,9 @@ body {
     padding: 2rem;
     margin-right: 3rem;
     display: flex;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
     gap: 2rem;
     overflow: auto;
     position: relative;
@@ -668,8 +671,9 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     min-width: 80rem;
-    height: 70rem;
+    max-height: 70rem;
     padding: 3rem 5rem;
+    padding-bottom: 5rem;
     border-radius: 1.5rem;
     background-color: var(--color-secondary);
     z-index: 1000;
@@ -751,7 +755,7 @@ body {
 .code-container-text {
     font-size: 1.5rem;
     line-height: 1.5;
-    height: 55rem;
+    max-height: 55rem;
     overflow-y: auto;
     border-radius: 0 2rem 2rem 2rem;
     padding: 2rem;
