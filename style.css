@@ -809,6 +809,7 @@ body {
     right: 7rem;
     font-size: 2rem;
     padding: 1rem 1.4rem;
+    padding: .8rem 1.2rem;
     border-radius: 1rem;
     border: 0.5px solid #808080;
     background-color: var(--color-tertiary);
