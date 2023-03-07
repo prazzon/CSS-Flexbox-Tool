@@ -28,7 +28,9 @@ const modal = document.getElementById("modal");
 const overlay = document.getElementById("overlay");
 const modalCloseBtn = document.getElementById("modal-close-btn");
 const cssCode = document.getElementById("css-code");
-const copyCodeBtn = document.getElementById("copy-code-btn");
+const htmlCode = document.getElementById("html-code");
+const copyCodeCssBtn = document.getElementById("copy-code-css-btn");
+const copyCodeHtmlBtn = document.getElementById("copy-code-html-btn");
 const alert = document.getElementById("alert");
 
 // Create an array to store the selected playground item index
@@ -61,6 +63,15 @@ addInputEvent(fontSizeInput, 'fontSize');
 addInputEvent(ItemWidthInput, 'minWidth');
 addInputEvent(ItemHeightInput, 'minHeight');
 addCheckboxEvent(centerTextCheckbox, 'checked');
+
+// Event listener for the copy code button
+copyCodeCssBtn.addEventListener('click', () => {
+    copyCode(cssCode.innerText);
+});
+
+copyCodeHtmlBtn.addEventListener('click', () => {
+    copyCode(htmlCode.innerText);
+});
 
 // Event listener for the add item button
 addItemBtn.addEventListener('click', () => {
@@ -150,14 +161,35 @@ getCodeBtn.addEventListener('click', () => {
     });
 
     // Update the css code element with the code that are not the default value
-    cssCode.innerHTML = `.flexbox-container {<br>
-        <span class='tab'></span>display: <span class='highlight'>${display}</span>;<br>
-        ${flexDirection !== 'row' ? `<span class='tab'></span>flex-direction: <span class='highlight'>${flexDirection}</span>;<br>` : ''}
-        ${flexWrap !== 'nowrap' ? `<span class='tab'></span>flex-wrap: <span class='highlight'>${flexWrap}</span>;<br>` : ''}
-        ${justifyContent !== 'flex-start' ? `<span class='tab'></span>justify-content: <span class='highlight'>${justifyContent}</span>;<br>` : ''}
-        ${alignItems !== 'stretch' ? `<span class='tab'></span>align-items: <span class='highlight'>${alignItems}</span>;<br>` : ''}
-        ${alignContent !== 'stretch' ? `<span class='tab'></span>align-content: <span class='highlight'>${alignContent}</span>;<br>` : ''}
-    }
+    cssCode.innerHTML = `
+        <code class="css"><span class="selector">.flexbox-container</span> {<br>
+        </span><span class='property'>&nbsp;&nbsp;&nbsp;display</span>: <span class='value'>${display}</span>;<br>
+        ${
+            flexDirection !== "row"
+                ? `&nbsp;&nbsp;&nbsp;<span class='property'>flex-direction</span>: <span class='value'>${flexDirection}</span>;<br>`
+                : ""
+        }
+        ${
+            flexWrap !== "nowrap"
+                ? `&nbsp;&nbsp;&nbsp;<span class='property'>flex-wrap</span>: <span class='value'>${flexWrap}</span>;<br>`
+                : ""
+        }
+        ${
+            justifyContent !== "flex-start"
+                ? `&nbsp;&nbsp;&nbsp;<span class='property'>justify-content</span>: <span class='value'>${justifyContent}</span>;<br>`
+                : ""
+        }
+        ${
+            alignItems !== "stretch"
+                ? `&nbsp;&nbsp;&nbsp;<span class='property'>align-items</span>: <span class='value'>${alignItems}</span>;<br>`
+                : ""
+        }
+        ${
+            alignContent !== "stretch"
+                ? `&nbsp;&nbsp;&nbsp;<span class='property'>align-content</span>: <span class='value'>${alignContent}</span>;<br>`
+                : ""
+        }
+        }</code>
     `;
 
     // Loop through each playground item and add the code that are not the default value
@@ -171,25 +203,61 @@ getCodeBtn.addEventListener('click', () => {
 
         // Check if all the values are not the default value
         if (order !== '0' || flex !== '0 1 auto' || alignSelf !== 'auto' || fontSize || minWidth || minHeight) {
-            cssCode.innerHTML += `<br><br>.flexbox-container > div:nth-child(${index + 1}) {<br>
-                ${order !== '0' ? `<span class='tab'></span>order: <span class='highlight'>${order}</span>;<br>` : ''}
-                ${flex !== '0 1 auto' ? `<span class='tab'></span>flex: <span class='highlight'>${flex}</span>;<br>` : ''}
-                ${alignSelf !== 'auto' ? `<span class='tab'></span>align-self: <span class='highlight'>${alignSelf}</span>;<br>` : ''}
-                ${fontSize ? `<span class='tab'></span>font-size: <span class='highlight'>${fontSize}</span>;<br>` : ''}
-                ${minWidth ? `<span class='tab'></span>min-width: <span class='highlight'>${minWidth}</span>;<br>` : ''}
-                ${minHeight ? `<span class='tab'></span>min-height: <span class='highlight'>${minHeight}</span>;<br>` : ''}
-            }
-            `;
+            cssCode.innerHTML += `<br><br><code class="css"><span class="selector">.flexbox-container</span> > <span class="selector">div</span>:nth-child(${
+                index + 1
+            }) {<br>
+                ${
+                    order !== "0"
+                        ? `&nbsp;&nbsp;&nbsp;<span class='property'>order</span>: <span class='value'>${order}</span>;<br>`
+                        : ""
+                }
+                ${
+                    flex !== "0 1 auto"
+                        ? `&nbsp;&nbsp;&nbsp;<span class='property'>flex</span>: <span class='value'>${flex}</span>;<br>`
+                        : ""
+                }
+                ${
+                    alignSelf !== "auto"
+                        ? `&nbsp;&nbsp;&nbsp;<span class='property'>align-self</span>: <span class='value'>${alignSelf}</span>;<br>`
+                        : ""
+                }
+                ${
+                    fontSize
+                        ? `&nbsp;&nbsp;&nbsp;<span class='property'>font-size</span>: <span class='value'>${fontSize}</span>;<br>`
+                        : ""
+                }
+                ${
+                    minWidth
+                        ? `&nbsp;&nbsp;&nbsp;<span class='property'>min-width</span>: <span class='value'>${minWidth}</span>;<br>`
+                        : ""
+                }
+                ${
+                    minHeight
+                        ? `&nbsp;&nbsp;&nbsp;<span class='property'>min-height</span>: <span class='value'>${minHeight}</span>;<br>`
+                        : ""
+                }
+            }</code>`;
         }
     });
-})
 
-// Event listener to copy the code to the clipboard
-copyCodeBtn.addEventListener('click', () => {
-    // Get the code
-    const code = cssCode.textContent;
+    // Get the html code and add it to the html code element
+    htmlCode.innerHTML = `
+        <code class="html">&lt;<span class="tag">div</span> <span class="attribute">class</span>=<span class="value">"flexbox-container"</span>&gt;</code><br>
+    `
+    // Loop through each playground item and add the code that are not empty
+    playgroundItems.forEach((item, index) => {
+        const text = playground.children[index].firstElementChild.textContent;
+        htmlCode.innerHTML += `
+            <code class="html">&nbsp;&nbsp;&nbsp;&lt;<span class="tag">div</span> <span class="attribute">class</span>=<span class="value">"flex-item"</span>&gt;${text}&lt;/<span class="tag">div</span>&gt;</code><br>
+        `;
+    });
+    htmlCode.innerHTML += `
+        <code class="html">&lt;/<span class="tag">div</span>&gt;</code><br>
+    `;
+});
 
-    // Copy the code to the clipboard
+// Function to copy the code to the clipboard
+function copyCode(code) {
     navigator.clipboard.writeText(code).then(() => {
         // Add show class to the alert class
         alert.classList.add("show");
@@ -199,7 +267,7 @@ copyCodeBtn.addEventListener('click', () => {
             alert.classList.remove("show");
         }, 2000);
     });
-});
+}
 
 // Function to create a new playground item
 function createPlaygroundItem(index) {

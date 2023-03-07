@@ -670,7 +670,7 @@ body {
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 80rem;
+    min-width: 100rem;
     max-height: 70rem;
     padding: 3rem 5rem;
     padding-bottom: 5rem;
@@ -710,7 +710,7 @@ body {
     font-size: 4.5rem;
     cursor: pointer;
     padding: 0 1.2rem;
-    border-radius: 0.8rem;
+    border-radius: 1rem;
     border: 0.5px solid #808080;
     box-shadow: 1.5px 3px 0 0 #646464;
     transition: all 0.3s;
@@ -738,6 +738,17 @@ body {
 .code-container {
     padding-top: 2rem;
     font-family: 'Inconsolata', monospace;
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+}
+
+.css-container {
+    width: 50%;
+}
+
+.html-container {
+    width: 50%;
 }
 
 .code-container-title {
@@ -761,14 +772,35 @@ body {
     padding: 2rem;
     color: #dcdadc;
     background-color: var(--color-tertiary);
-}
-
-.code-container-text .highlight {
-    color: #cee380;
+    max-height: 40rem;
 }
 
 .code-container-text .tab {
     margin-left: 3rem;
+}
+
+.css .selector {
+    color: #70a982;
+}
+
+.css .property {
+    color: #db9ef2;
+}
+
+.css .value {
+    color: #f1c40f;
+}
+
+.html .tag {
+    color: #e74c3c;
+}
+
+.html .attribute {
+    color: #f1c40f;
+}
+
+.html .value {
+    color: #2ecc71;
 }
 
 .copy-icon {
@@ -776,13 +808,21 @@ body {
     top: 12rem;
     right: 7rem;
     font-size: 2rem;
-    padding: 1.2rem 1.7rem;
+    padding: 1rem 1.4rem;
     border-radius: 1rem;
     border: 0.5px solid #808080;
     background-color: var(--color-tertiary);
     box-shadow: 1.5px 3px 0 0 #646464;
     cursor: pointer;
     transition: all 0.3s;
+}
+
+.copy-icon-html {
+    right: 6.8rem;
+}
+
+.copy-icon-css {
+    right: 53.8rem;
 }
 
 .copy-icon:hover {
@@ -806,6 +846,7 @@ body {
 .alert.show {
     opacity: 1;
     transform: translate(-50%, 0);
+    z-index: 1000;
 }
 
 .footer {
@@ -916,7 +957,7 @@ body {
 /* Media Queries */
 /* ############################## */
 
-@media screen and (max-height: 740px) {
+@media screen and (max-height: 740px), (max-width: 1024px){
     body {
         padding: 2rem;
     }
@@ -952,11 +993,28 @@ body {
     }
 
     .modal {
-        height: 50rem;
+        height: 55rem;
         min-width: 70rem;
     }
 
+    .code-container {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+
+    .css-container, .html-container {
+        width: 100%;
+    }
+
     .code-container-text {
-        height: 35rem;
+        max-height: 15rem;
+    }
+
+    .copy-icon-css {
+        right: 7rem;
+    }
+
+    .copy-icon-html {
+        top: 37rem;
     }
 }
