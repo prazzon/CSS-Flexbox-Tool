@@ -1,4 +1,4 @@
-# CSS Flexbox Tool
+# CSS Flexbox Tool - Legacy
 
 CSS Flexbox Tool is a CSS flexbox playground and code generator tool. It's a tool for building layouts using CSS Flexbox.
 
