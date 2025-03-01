@@ -15,7 +15,7 @@ CSS Flexbox Tool is a CSS flexbox playground and code generator tool. It's a too
 - Click on the "Get code" button to get the CSS code.
 
 ## Live Demo
-The live demo of CSS Flexbox Tool can be found at https://cssflexboxtool.netlify.app/
+The live demo of CSS Flexbox Tool can be found at [demo](https://cssflexboxtool.netlify.app/)
 
 ## Technical Stack
 - HTML
