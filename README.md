@@ -1,4 +1,4 @@
-# CSS Flexbox
+# CSS Flexbox Tool
 
 Legacy web app, visit [Flexbox Labs](https://flexboxlabs.netlify.com)
 
